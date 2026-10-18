@@ -48,24 +48,27 @@ public class Catalog {
 public static void main (String args []){
 
         // String isbn, String title, String author, WaitingList waitingList
-    Book book1 = new Book ("A001", "Book1" , "Author 1" , new WaitingList() );
-    Book book2 = new Book ("A002", "Book2" , "Author 1" , new WaitingList() );
+    Book book1 = new Book ("A001", "Book1" , "Author 1" );
+    Book book2 = new Book ("A002", "Book2" , "Author 1" );
 
     Catalog catalog = new Catalog();
 
     catalog.addBook(book2);
     catalog.addBook(book1);
 
-    book1.members().join("member1");
-    book1.members().join("member2");
-    System.out.println( "WaitingList: " + book1.members());
+    Loans loans = new Loans();
+
+    loans.join(book1.isbn(), "member1" );
+    loans.join(book1.isbn(), "member2" );
+
+    System.out.println( "WaitingList: " + loans);
     try {
-        book1.members().join("member1");
+        loans.join(book1.isbn(), "member1" );
     } catch (Exception e) {
         System.out.println("Exception : " + e );
     }
 
-    System.out.println( "Next member: " + book1.members().next());
+    System.out.println( "Next member: " + loans.next(book1.isbn()));
     System.out.println( "Books: " + catalog.toString());
 
 
