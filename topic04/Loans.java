@@ -1,5 +1,6 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class Loans {
     private final Map<String, WaitingList> waitingLists = new HashMap<>();
