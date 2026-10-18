@@ -6,14 +6,16 @@ public class Loans {
 
     public String next (String isbn){
         WaitingList waitingList = waitingLists.get(isbn);
+
+        if (waitingList == null) {
+            throw new NoSuchElementException("nobody is waiting for " + isbn);
+        }
+
         return waitingList.next();
     }
 
     public void join(String isbn, String member){
-
-        waitingLists.computeIfAbsent(isbn, k -> new WaitingList());
-        WaitingList waitingList = waitingLists.get(isbn);
-        waitingList.join(member);
+        waitingLists.computeIfAbsent(isbn, k -> new WaitingList()).join(member);
     }
 
     public String toString(){
