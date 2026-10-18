@@ -1,6 +1,8 @@
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Collections;
+import java.util.Collection;
 
 
 //  LinkedHashMap
@@ -12,8 +14,8 @@ import java.util.Collections;
 
 public class Catalog {
 
-    public Map <String, Book> allBooks (){
-        return Collections.unmodifiableMap(books);
+    public  Collection<Book> allBooks (){
+        return Collections.unmodifiableCollection(books.values());
     }
 
     public void addBook (Book book){
@@ -54,16 +56,16 @@ public static void main (String args []){
     catalog.addBook(book2);
     catalog.addBook(book1);
 
-    book1.waitingList().join("member1");
-    book1.waitingList().join("member2");
-    System.out.println( "WaitingList: " + book1.waitingList());
+    book1.members().join("member1");
+    book1.members().join("member2");
+    System.out.println( "WaitingList: " + book1.members());
     try {
-        book1.waitingList().join("member1");
+        book1.members().join("member1");
     } catch (Exception e) {
         System.out.println("Exception : " + e );
     }
 
-    System.out.println( "Next member: " + book1.waitingList().next());
+    System.out.println( "Next member: " + book1.members().next());
     System.out.println( "Books: " + catalog.toString());
 
 

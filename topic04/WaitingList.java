@@ -9,28 +9,28 @@ import java.util.Set;
 
 public class WaitingList {
 
-    private final LinkedHashSet<String> waitingList;
+    private final LinkedHashSet<String> members;
 
     public WaitingList(){
-        this.waitingList = new LinkedHashSet<>();
+        this.members = new LinkedHashSet<>();
     }
 
     public String next (){
-        return waitingList.removeFirst();
+        return members.removeFirst();
     }
 
     public void join(String member){
 
-        if ( waitingList.contains (member)){
+        if ( members.contains (member)){
             throw new IllegalStateException("member can't join twice");
         }
 
-        waitingList.add(member);
+        members.add(member);
     }
 
     public String toString(){
 
-        return waitingList.toString();
+        return members.toString();
 
     }
 
