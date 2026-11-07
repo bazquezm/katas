@@ -10,13 +10,13 @@ public record Box(int books, List<Box> boxes) {
 
     static int totalBooks(Box box){
 
-        int totalBoxes = 0;
+        int innerBooks = 0;
 
-        for (int i=0; i < box.boxes().size(); i++){
-            totalBoxes += totalBooks(box.boxes.get(i));
+        for (Box inner : box.boxes()){
+            innerBooks += totalBooks(inner);
         }
 
-        return box.books() + totalBoxes;
+        return box.books() + innerBooks;
     }
 
 }

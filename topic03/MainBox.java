@@ -20,7 +20,7 @@ public class MainBox {
         // Imprimira 4
         System.out.println(Box.totalBooks(box1));
 
-        // Imprimira 28
+        // Imprimira 32
         System.out.println(Box.totalBooks(boxFinal));
 
     }
